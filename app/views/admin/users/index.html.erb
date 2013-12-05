@@ -1,0 +1,37 @@
+<h1>Listing user</h1>
+
+<%= form_tag admin_users_approve_path do %>
+  <table>
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>Approved</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.email %></td>
+          <td><%= user.is_approved ? "Yes" : "Not yet" %></td>
+          <td>
+            <% unless user.approved? %>
+              <a href='#' class='approve' id='<%= user.id %>'>Approve</a>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= hidden_field_tag "user_id" %>
+<% end %>
+
+<script type='text/javascript'>
+  $(document).ready(function() {
+    $('.approve').click(function() {
+      $('#user_id').val($(this).attr('id'));
+      $(this).closest('form').submit();
+    });
+  });
+</script>

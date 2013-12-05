@@ -1,0 +1,6 @@
+<% unless current_user.approved? %>
+  <h2>Your signup form is pending for approval. Thanks for having subscribed!</h2>
+<% else %>
+  <h2>Welcome to our website. Unfortunately, we're still working for the content :)</h2>
+<% end %>
+<%= link_to "Back", "/" %>
