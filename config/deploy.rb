@@ -1,16 +1,15 @@
-set :application, 'ptnk-dev'
-set :user, 'ec2-user'
-set :deploy_to, "/home/#{user}/apps/#{application}"
+set :deploy_to, "/var/www/apps/ptnk-dev"
 set :deploy_via, :remote_cache
+set :use_sudo, false
 
-set :repository, "git@github.com:lephuocdai/ptnk-dev.git"
+set :repo_url, "https://github.com/lephuocdai/ptnk-dev"
 set :scm, :git
 set :branch, "master"
 
-set :ssh_options, { 
-  :forward_agent => true, 
-  :auth_methods => "publickey",
-  :keys => ["~/.ssh/ptnk-dev.pem"]
+set :ssh_options, {
+  user: 'ec2-user',
+  auth_methods: ["publickey"],
+  keys: ["~/.ssh/ptnk.pem"]
 }
 
 set :format, :pretty
