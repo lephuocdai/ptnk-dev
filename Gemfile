@@ -39,7 +39,7 @@ end
 # gem 'unicorn'
 
 # Use Capistrano for deployment
-# gem 'capistrano', group: :development
+gem 'capistrano', group: :development
 
 # Use devise for User signup/login
 gem 'devise'
